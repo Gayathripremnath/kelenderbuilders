@@ -1,5 +1,4 @@
 .navbar-header {
-  background-color: #060606ce;
   padding: 18px 30px;
   margin: 6px;
   position: sticky;
@@ -7,7 +6,7 @@
   z-index: 1000;
   transition: all 0.3s ease;
   border-radius: 30px;
-  border-bottom: 1px solid #d2800d;
+  /* border-bottom: 1px solid #d2800d; */
 }
 
 .navbar-header.scrolled {
@@ -33,7 +32,7 @@
 }
 
 .logo-img {
-  height: 66px;
+  height: 86px;
   width: auto;
   object-fit: contain;
 }
@@ -50,7 +49,7 @@
   align-items: center;
   gap: 4px;
   text-decoration: none;
-  color: #ffffff;
+  color: #090909;
   font-weight: 500;
   font-size: 15px;
   transition: color 0.3s;
