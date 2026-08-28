@@ -16,6 +16,15 @@ const revealFromBelow = {
   }
 };
 
+const imageReveal = {
+  hidden: { opacity: 0, scale: 1.08 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 1, ease: 'easeOut' }
+  }
+};
+
 const staggerReveal = {
   hidden: {},
   visible: {
@@ -30,7 +39,7 @@ export default function Home() {
   return (
     <div className="home-main">
       {/* 1. HERO SECTION */}
-      <section className="hero-section">
+      <motion.section className="hero-section" variants={imageReveal} initial="hidden" animate="visible">
         <motion.div 
           className="hero-content-box"
           initial={{ opacity: 0, y: 30 }}
@@ -52,7 +61,7 @@ export default function Home() {
           <span className="dot"></span>
           <span className="dot"></span>
         </div>
-      </section>
+      </motion.section>
 
       {/* 2. VISIONARY PLANNING GRID */}
       <motion.section className="features-section" variants={revealFromBelow} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
@@ -84,7 +93,7 @@ export default function Home() {
       {/* 3. REDEFINING THE FUTURE OF DESIGN */}
       <motion.section className="redefining-section" variants={revealFromBelow} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
         <motion.div className="redefining-container" variants={staggerReveal}>
-          <motion.div className="redefining-img-wrapper" variants={revealFromBelow}>
+          <motion.div className="redefining-img-wrapper" variants={imageReveal}>
             <div className="satisfaction-badge">
               <h2>100%</h2>
               <p>Satisfaction Guarantee</p>
@@ -101,7 +110,7 @@ export default function Home() {
             </div>
 
             <div className="tab-pane-content">
-              <motion.div className="pane-left-img" variants={revealFromBelow}></motion.div>
+              <motion.div className="pane-left-img" variants={imageReveal}></motion.div>
               <div className="pane-right-info">
                 <p>Our vision goes beyond aesthetics—we aim to design spaces that remain relevant and functionals.</p>
                 <ul>
@@ -186,10 +195,10 @@ export default function Home() {
           ))}
         </motion.div>
         <motion.div className="portfolio-grid" variants={staggerReveal}>
-          <motion.div className="p-item large" variants={revealFromBelow}></motion.div>
-          <motion.div className="p-item tall" variants={revealFromBelow}></motion.div>
-          <motion.div className="p-item" variants={revealFromBelow}></motion.div>
-          <motion.div className="p-item" variants={revealFromBelow}></motion.div>
+          <motion.div className="p-item large" variants={imageReveal}></motion.div>
+          <motion.div className="p-item tall" variants={imageReveal}></motion.div>
+          <motion.div className="p-item" variants={imageReveal}></motion.div>
+          <motion.div className="p-item" variants={imageReveal}></motion.div>
         </motion.div>
       </motion.section>
 
@@ -199,7 +208,7 @@ export default function Home() {
         <motion.h2 variants={revealFromBelow}>Explore The Latest News</motion.h2>
         <motion.div className="news-grid-container" variants={staggerReveal}>
           <motion.div className="news-main-card" variants={revealFromBelow}>
-            <motion.div className="news-img-box" variants={revealFromBelow}></motion.div>
+            <motion.div className="news-img-box" variants={imageReveal}></motion.div>
             <div className="news-meta">
               <span><Calendar size={14} /> May 24, 2025</span>
               <span><User size={14} /> Developer</span>

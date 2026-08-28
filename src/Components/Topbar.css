@@ -50,8 +50,8 @@
   color: #c5a880;
 }
 
-@media(max-width: 992px) {
+@media(max-width: 1024px) {
   .topbar {
-    display: none;
+    display: none !important;
   }
 }
