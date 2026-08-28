@@ -60,6 +60,8 @@
 .pane-left-img:hover,
 .p-item:hover {
   background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Hero Section */

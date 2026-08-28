@@ -24,9 +24,9 @@ export default function Navbar() {
 
         <nav className={`navbar-nav ${menuOpen ? 'open' : ''}`}>
           <a href="#home" className="nav-link active" onClick={() => setMenuOpen(false)}>Home</a>
+          <a href="#about" className="nav-link" onClick={() => setMenuOpen(false)}>About</a>
           <a href="#inner-pages" className="nav-link" onClick={() => setMenuOpen(false)}>Services</a>
           <a href="#projects" className="nav-link" onClick={() => setMenuOpen(false)}>Projects</a>
-          <a href="#blog" className="nav-link" onClick={() => setMenuOpen(false)}>Blog</a>
           <a href="#contact" className="nav-link" onClick={() => setMenuOpen(false)}>Contact Us</a>
         </nav>
 

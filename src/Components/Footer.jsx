@@ -14,52 +14,14 @@ import {
 } from "react-icons/fa6";
 
 import "./Footer.css";
-import Logo from "../assets/Logo.jpeg";
+import Logo from "../assets/Logo-kel1.png";
 
 const Footer = () => {
   return (
     <footer className="site-footer">
 
       {/* ================= NEWSLETTER ================= */}
-      <div className="footer-newsletter">
-
-        <div className="newsletter-title">
-          <h2>
-            Register Our Newsletter,
-            <br />
-            <span>And Stay In Touch</span>
-          </h2>
-        </div>
-
-        <div className="newsletter-form-wrapper">
-
-          <form className="newsletter-form">
-
-            <input
-              type="email"
-              placeholder="Enter Your Email"
-            />
-
-            <button type="submit">
-              Subscribe Now
-            </button>
-
-          </form>
-
-          <label className="terms-check">
-            <input type="checkbox" />
-
-            <span>
-              I have accepted the{" "}
-              <a href="#terms">
-                Terms & Conditions
-              </a>
-            </span>
-          </label>
-
-        </div>
-
-      </div>
+      
 
 
       {/* ================= DIVIDER ================= */}
@@ -116,21 +78,21 @@ const Footer = () => {
 
             <li>
               <a href="#projects">
-                Our Projects
+                 Projects
               </a>
             </li>
 
             <li>
               <a href="#services">
-                Our Services
+                 Services
               </a>
             </li>
 
-            <li>
+            {/* <li>
               <a href="#careers">
                 Careers
               </a>
-            </li>
+            </li> */}
 
             <li>
               <a href="#contact">
@@ -138,11 +100,11 @@ const Footer = () => {
               </a>
             </li>
 
-            <li>
+            {/* <li>
               <a href="#faq">
                 FAQ
               </a>
-            </li>
+            </li> */}
 
           </ul>
 

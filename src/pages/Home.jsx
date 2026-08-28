@@ -36,20 +36,20 @@ const heroSlides = [
   {
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85',
     tag: 'IMPACT / LASTING IMPRESSIONS',
-    title: <>Crafting Dreams Into<br />Reality</>,
-    description: 'Every detail matters—our team combines creativity, sustainability, and expertise to deliver designs that resonate with both heart and purpose.'
+    title: <>Building Dreams.  <br /> Creating Landmarks.</>,
+    description: 'Quality construction solutions designed to bring your vision to life.'
   },
   {
     image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85',
     tag: 'FORM / FUNCTIONAL BEAUTY',
-    title: <>Spaces Made For<br />Living</>,
-    description: 'We shape thoughtful interiors around the way you live, balancing warm materials, clear lines, and enduring architectural character.'
+    title: <>From Foundation to Finish, <br /> We Build with Excellence</>,
+    description: 'Reliable craftsmanship, professional expertise, and on-time project delivery.'
   },
   {
     image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85',
     tag: 'VISION / BUILT TO LAST',
-    title: <>Architecture With<br />Purpose</>,
-    description: 'From the first sketch to the final detail, we create remarkable places with precision, clarity, and a lasting sense of place.'
+    title: <>Your Vision. Our Expertise.<br />Built to Last</>,
+    description: 'Complete construction solutions for residential, commercial, and industrial projects.'
   }
 ];
 
@@ -192,10 +192,7 @@ export default function Home() {
             <div className="badge-pill">{heroSlides[currentHeroSlide].tag}</div>
             <h1 className="hero-title">{heroSlides[currentHeroSlide].title}</h1>
             <p className="hero-desc">{heroSlides[currentHeroSlide].description}</p>
-            <a href="#look" className="hero-look-btn">
-              <div className="arrow-circle-dark"><ArrowRight size={16} /></div>
-              <span>Have A Look</span>
-            </a>
+            
           </motion.div>
         </AnimatePresence>
         <div className="hero-pagination-dots">
@@ -249,7 +246,7 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.div className="redefining-content" variants={revealFromBelow}>
-            <span className="section-tag">ENDLESS POSSIBILITIES</span>
+            <span className="section-tag">ABOUT US</span>
             <h2>Redefining The Future Of Design</h2>
             
             <div className="tab-pills">
@@ -281,8 +278,8 @@ export default function Home() {
       {/* 4. PATH TO ARCHITECTURAL GREATNESS (SERVICES) */}
       <motion.section className="services-section" variants={revealFromBelow} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
         <motion.div className="services-header" variants={revealFromBelow}>
-          <span className="section-tag light">OUR FUNCTIONS</span>
-          <h2>Our Path To Architectural Greatness</h2>
+          <span className="section-tag light">OUR SERVICE</span>
+          <h2>Your Business Needs, Our Technology Expertise</h2>
         </motion.div>
         <div className="services-showcase">
           <button className="services-arrow services-arrow-left" type="button" aria-label="Previous services">
@@ -290,9 +287,9 @@ export default function Home() {
           </button>
           <motion.div className="services-cards-grid" variants={staggerReveal}>
           {[
-            { title: "Strategic Design", icon: <Compass size={24} />, desc: "From the first idea to the master plan, we shape layouts that balance innovation." },
-            { title: "Space Styling", icon: <Building size={24} />, desc: "Interiors designed to reflect personality and purpose – combining comfort and elegance." },
-            { title: "Business Environments", icon: <Briefcase size={24} />, desc: "Dynamic offices, retail spaces, and commercial hubs built to boost productivity." }
+            { title: "Residential & Commercial Construction", icon: <Compass size={24} />, desc: "From the first idea to the master plan, we shape layouts that balance innovation." },
+            { title: "Architectural & Design Services", icon: <Building size={24} />, desc: "Interiors designed to reflect personality and purpose – combining comfort and elegance." },
+            { title: "Construction Supervision", icon: <Briefcase size={24} />, desc: "Dynamic offices, retail spaces, and commercial hubs built to boost productivity." }
           ].map((srv, idx) => (
             <motion.div className="service-card" key={idx} variants={revealFromBelow}>
               <div className={`service-card-image service-card-image-${idx + 1}`}>
@@ -337,7 +334,7 @@ export default function Home() {
           ))}
         </motion.div>
       </motion.section> */}
-      
+
   {/* 5. OUR EXCELLENT EFFORTS */}
 <motion.section
   className="portfolio-section"
