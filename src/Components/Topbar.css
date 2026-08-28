@@ -1,0 +1,57 @@
+.topbar {
+  background-color: #111111;
+  color: #a3a3a3;
+  font-size: 13px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: inherit;
+}
+
+.topbar-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.topbar-left, .topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #cccccc;
+}
+
+.topbar-icon {
+  color: #c5a880;
+}
+
+.topbar-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 20px;
+}
+
+.topbar-socials a {
+  color: #cccccc;
+  transition: color 0.3s ease;
+}
+
+.topbar-socials a:hover {
+  color: #c5a880;
+}
+
+@media(max-width: 992px) {
+  .topbar {
+    display: none;
+  }
+}

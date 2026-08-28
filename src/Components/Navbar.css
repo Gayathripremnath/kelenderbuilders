@@ -1,0 +1,129 @@
+.navbar-header {
+  background-color: #060606ce;
+  padding: 18px 30px;
+  margin: 6px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  border-bottom: 1px solid #d2800d;
+}
+
+.navbar-header.scrolled {
+  background-color: #000000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  padding: 12px 30px;
+}
+
+.navbar-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 66px;
+  width: auto;
+  object-fit: contain;
+}
+
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #c5a880;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navbar-phone {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.phone-icon-wrap {
+  width: 40px;
+  height: 40px;
+  background-color: #c5a880;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-details span {
+  font-size: 11px;
+  color: #777;
+  display: block;
+}
+
+.phone-details strong {
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.quote-btn {
+  display: flex;
+  align-items: center;
+  background-color: #c5a880;
+  color: #fff;
+  padding: 10px 10px 10px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  gap: 14px;
+  transition: background 0.3s;
+}
+
+.quote-btn:hover {
+  background-color: #b0936b;
+}
+
+.arrow-circle {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  color: #c5a880;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media(max-width: 1024px) {
+  .navbar-nav, .navbar-phone {
+    display: none;
+  }
+}
