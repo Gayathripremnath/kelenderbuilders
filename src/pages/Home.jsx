@@ -135,20 +135,30 @@ export default function Home() {
           <span className="section-tag light">OUR FUNCTIONS</span>
           <h2>Our Path To Architectural Greatness</h2>
         </motion.div>
-        <motion.div className="services-cards-grid" variants={staggerReveal}>
+        <div className="services-showcase">
+          <button className="services-arrow services-arrow-left" type="button" aria-label="Previous services">
+            <ChevronLeft size={18} />
+          </button>
+          <motion.div className="services-cards-grid" variants={staggerReveal}>
           {[
             { title: "Strategic Design", icon: <Compass size={24} />, desc: "From the first idea to the master plan, we shape layouts that balance innovation." },
             { title: "Space Styling", icon: <Building size={24} />, desc: "Interiors designed to reflect personality and purpose – combining comfort and elegance." },
             { title: "Business Environments", icon: <Briefcase size={24} />, desc: "Dynamic offices, retail spaces, and commercial hubs built to boost productivity." }
           ].map((srv, idx) => (
             <motion.div className="service-card" key={idx} variants={revealFromBelow}>
-              <div className="service-card-top-icon">{srv.icon}</div>
+              <div className={`service-card-image service-card-image-${idx + 1}`}>
+                <div className="service-card-top-icon">{srv.icon}</div>
+              </div>
               <h3>{srv.title}</h3>
               <p>{srv.desc}</p>
               <a href="#details" className="view-details-link">View Details <div className="mini-arrow">↗</div></a>
             </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+          <button className="services-arrow services-arrow-right" type="button" aria-label="Next services">
+            <ChevronRight size={18} />
+          </button>
+        </div>
         <motion.div className="center-action" variants={revealFromBelow}>
           <a href="#all-services" className="all-services-btn">
             <div className="arrow-circle"><ArrowRight size={14} /></div>
