@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { 
   ArrowRight, Compass, Layers, Home as HomeIcon, Award, 
-  CheckCircle, Briefcase, Building, PenTool, Palette, 
-  Calendar, User, ChevronLeft, ChevronRight 
+  CheckCircle, Briefcase, Building, PenTool, Palette,
+  ChevronLeft, ChevronRight
 } from 'lucide-react';
 import './Home.css';
 
@@ -32,9 +32,78 @@ const staggerReveal = {
   }
 };
 
+const projects = [
+  { id: 1, image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85', title: 'Architectural Visions', category: 'Interior Architecture', layout: 'small' },
+  { id: 2, image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85', title: 'Modern Residence', category: 'Residential Architecture', layout: 'tall' },
+  { id: 3, image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85', title: 'Sustainable Living', category: 'Sustainable Design', layout: 'wide' },
+  { id: 4, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85', title: 'Urban Development', category: 'Urban Planning', layout: 'small' },
+  { id: 5, image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85', title: 'Quiet Interiors', category: 'Interior Architecture', layout: 'small' },
+  { id: 6, image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85', title: 'Garden House', category: 'Residential Architecture', layout: 'tall' },
+  { id: 7, image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=85', title: 'Adaptive Workspace', category: 'Urban Planning', layout: 'small' },
+  { id: 8, image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85', title: 'Living Landscape', category: 'Sustainable Design', layout: 'wide' }
+];
+const testimonials = [
+  {
+    id: 1,
+    image:
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85",
+    avatar:
+      "https://i.pravatar.cc/100?img=12",
+    name: "Ramesh Gupta",
+    role: "Home Owner",
+    text:
+      "Kelender transformed our vision into a beautiful home that truly reflects who we are. Every detail was handled with care and professionalism."
+  },
+
+  {
+    id: 2,
+    image:
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85",
+    avatar:
+      "https://i.pravatar.cc/100?img=32",
+    name: "Arun Menon",
+    role: "Property Owner",
+    text:
+      "From planning to completion, the entire team maintained excellent communication and delivered a space that exceeded our expectations."
+  },
+
+  {
+    id: 3,
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+    avatar:
+      "https://i.pravatar.cc/100?img=47",
+    name: "Nisha Thomas",
+    role: "Client",
+    text:
+      "The quality, attention to detail and commitment shown throughout the project made the entire construction experience smooth and stress-free."
+  }
+];
 export default function Home() {
   const [activeTab, setActiveTab] = useState('objective');
   const [portfolioTab, setPortfolioTab] = useState('All');
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const filteredProjects = portfolioTab === 'All'
+    ? projects
+    : projects.filter((project) => project.category === portfolioTab);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (!selectedProject) return;
+      if (event.key === 'Escape') setSelectedProject(null);
+      if (event.key === 'ArrowLeft') {
+        const currentIndex = filteredProjects.findIndex((project) => project.id === selectedProject.id);
+        setSelectedProject(filteredProjects[(currentIndex - 1 + filteredProjects.length) % filteredProjects.length]);
+      }
+      if (event.key === 'ArrowRight') {
+        const currentIndex = filteredProjects.findIndex((project) => project.id === selectedProject.id);
+        setSelectedProject(filteredProjects[(currentIndex + 1) % filteredProjects.length]);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject, filteredProjects]);
 
   return (
     <div className="home-main">
@@ -168,7 +237,7 @@ export default function Home() {
       </motion.section>
 
       {/* 5. TURNING IDEAS INTO LANDMARKS (PROCESS) */}
-      <motion.section className="process-section" variants={revealFromBelow} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+      {/* <motion.section className="process-section" variants={revealFromBelow} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
         <motion.div className="process-header" variants={revealFromBelow}>
           <span className="section-tag">OUR PROCESS</span>
           <h2>Turning Ideas Into Landmarks</h2>
@@ -187,69 +256,178 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
-      </motion.section>
+      </motion.section> */}
+  {/* 5. OUR EXCELLENT EFFORTS */}
+<motion.section
+  className="portfolio-section"
+  variants={revealFromBelow}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+>
+  {/* SECTION HEADER */}
+  <motion.div
+    className="portfolio-header"
+    variants={revealFromBelow}
+  >
+    <span className="section-tag">
+      FRESH UPDATES
+    </span>
 
-      {/* 6. OUR EXCELLENT EFFORTS (PORTFOLIO FILTER) */}
-      <motion.section className="portfolio-section" variants={revealFromBelow} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-        <motion.span className="section-tag" variants={revealFromBelow}>FRESH UPDATES</motion.span>
-        <motion.h2 variants={revealFromBelow}>Our Excellent Efforts</motion.h2>
-        <motion.div className="filter-buttons" variants={revealFromBelow}>
-          {['All', 'Interior Architecture', 'Residential Architecture', 'Sustainable Design', 'Urban Planning'].map((cat) => (
-            <button 
-              key={cat} 
-              className={portfolioTab === cat ? 'active' : ''} 
-              onClick={() => setPortfolioTab(cat)}
+    <h2>
+      Our Excellent Efforts
+    </h2>
+  </motion.div>
+
+  {/* CATEGORY FILTER */}
+  <motion.div
+    className="filter-buttons"
+    variants={revealFromBelow}
+  >
+    {[
+      "All",
+      "Interior Architecture",
+      "Residential Architecture",
+      "Sustainable Design",
+      "Urban Planning"
+    ].map((cat) => (
+      <button
+        key={cat}
+        type="button"
+        className={
+          portfolioTab === cat ? "active" : ""
+        }
+        onClick={() => setPortfolioTab(cat)}
+      >
+        {cat === "All" && (
+          <span className="dot-bullet"></span>
+        )}
+
+        {cat}
+      </button>
+    ))}
+  </motion.div>
+
+  {/* GALLERY */}
+  <motion.div
+    className="portfolio-grid"
+    variants={staggerReveal}
+  >
+    <AnimatePresence mode="popLayout">
+      {filteredProjects.map((project) => (
+        <motion.button
+          key={project.id}
+          type="button"
+          className={`p-item ${project.layout}`}
+          style={{
+            backgroundImage: `url(${project.image})`
+          }}
+          variants={imageReveal}
+          initial="hidden"
+          animate="visible"
+          exit={{
+            opacity: 0,
+            scale: 0.92
+          }}
+          transition={{
+            duration: 0.45
+          }}
+          onClick={() => setSelectedProject(project)}
+        >
+          <span>
+            {project.title}
+          </span>
+        </motion.button>
+      ))}
+    </AnimatePresence>
+  </motion.div>
+</motion.section>
+    
+
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="portfolio-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedProject.title} preview`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
+            <button className="lightbox-close" type="button" onClick={() => setSelectedProject(null)} aria-label="Close preview">X</button>
+            <button className="lightbox-arrow lightbox-prev" type="button" onClick={(event) => {
+              event.stopPropagation();
+              const currentIndex = filteredProjects.findIndex((project) => project.id === selectedProject.id);
+              setSelectedProject(filteredProjects[(currentIndex - 1 + filteredProjects.length) % filteredProjects.length]);
+            }} aria-label="Previous project">{`<`}</button>
+            <motion.figure
+              className="lightbox-content"
+              initial={{ opacity: 0, scale: 0.88 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.88 }}
+              onClick={(event) => event.stopPropagation()}
             >
-              {cat === 'All' && <span className="dot-bullet"></span>} {cat}
-            </button>
-          ))}
-        </motion.div>
-        <motion.div className="portfolio-grid" variants={staggerReveal}>
-          <motion.div className="p-item large" variants={imageReveal}></motion.div>
-          <motion.div className="p-item tall" variants={imageReveal}></motion.div>
-          <motion.div className="p-item" variants={imageReveal}></motion.div>
-          <motion.div className="p-item" variants={imageReveal}></motion.div>
-        </motion.div>
-      </motion.section>
+              <img src={selectedProject.image} alt={selectedProject.title} />
+              <figcaption>{selectedProject.title}</figcaption>
+            </motion.figure>
+            <button className="lightbox-arrow lightbox-next" type="button" onClick={(event) => {
+              event.stopPropagation();
+              const currentIndex = filteredProjects.findIndex((project) => project.id === selectedProject.id);
+              setSelectedProject(filteredProjects[(currentIndex + 1) % filteredProjects.length]);
+            }} aria-label="Next project">{`>`}</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* 7. EXPLORE THE LATEST NEWS */}
-      <motion.section className="news-section" variants={revealFromBelow} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-        <motion.span className="section-tag" variants={revealFromBelow}>RECENT UPDATES</motion.span>
-        <motion.h2 variants={revealFromBelow}>Explore The Latest News</motion.h2>
-        <motion.div className="news-grid-container" variants={staggerReveal}>
-          <motion.div className="news-main-card" variants={revealFromBelow}>
-            <motion.div className="news-img-box" variants={imageReveal}></motion.div>
-            <div className="news-meta">
-              <span><Calendar size={14} /> May 24, 2025</span>
-              <span><User size={14} /> Developer</span>
+      {/* 7. CLIENT TESTIMONIALS */}
+      <motion.section
+        className="testimonials-section"
+        variants={revealFromBelow}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <div className="testimonials-container">
+          <motion.div
+            className="testimonial-image"
+            variants={imageReveal}
+            key={testimonials[currentTestimonial].image}
+            initial="hidden"
+            animate="visible"
+          >
+            <img src={testimonials[currentTestimonial].image} alt="Client project" />
+          </motion.div>
+
+          <motion.div
+            className="testimonial-content"
+            key={testimonials[currentTestimonial].id}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="testimonial-tag">PARTNER&nbsp;&nbsp;&nbsp; TRUSTED</span>
+            <h2>What Our Clients<br />Say</h2>
+            <div className="testimonial-stars">★★★★☆</div>
+            <p className="testimonial-text">“{testimonials[currentTestimonial].text}”</p>
+            <div className="testimonial-client">
+              <img src={testimonials[currentTestimonial].avatar} alt={testimonials[currentTestimonial].name} />
+              <div>
+                <h4>{testimonials[currentTestimonial].name}</h4>
+                <span>{testimonials[currentTestimonial].role}</span>
+              </div>
             </div>
-            <h3>Reviving Traditional Architecture With A Modern Twist</h3>
-            <p>Cultural heritage is finding new life in contemporary designs by incorporating traditional patterns...</p>
+            <div className="testimonial-controls">
+              <button type="button" onClick={() => setCurrentTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length)} aria-label="Previous testimonial">
+                <ChevronLeft size={18} />
+              </button>
+              <button type="button" onClick={() => setCurrentTestimonial((currentTestimonial + 1) % testimonials.length)} aria-label="Next testimonial">
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </motion.div>
-          <motion.div className="news-sub-list" variants={staggerReveal}>
-            <motion.div className="news-sm-card" variants={revealFromBelow}>
-              <div className="news-meta">
-                <span><Calendar size={14} /> June 13, 2025</span>
-                <span><User size={14} /> Developer</span>
-              </div>
-              <h4>Luxury Living Redefined Through Simplicity</h4>
-            </motion.div>
-            <motion.div className="news-sm-card" variants={revealFromBelow}>
-              <div className="news-meta">
-                <span><Calendar size={14} /> May 30, 2025</span>
-                <span><User size={14} /> Developer</span>
-              </div>
-              <h4>The Art Of Designing Timeless Spaces</h4>
-            </motion.div>
-            <motion.div className="news-sm-card" variants={revealFromBelow}>
-              <div className="news-meta">
-                <span><Calendar size={14} /> May 28, 2025</span>
-                <span><User size={14} /> Developer</span>
-              </div>
-              <h4>Wellness-Centered Homes For Better Living</h4>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+        </div>
       </motion.section>
     </div>
   );
