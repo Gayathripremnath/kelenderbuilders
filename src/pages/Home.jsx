@@ -32,6 +32,27 @@ const staggerReveal = {
   }
 };
 
+const heroSlides = [
+  {
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85',
+    tag: 'IMPACT / LASTING IMPRESSIONS',
+    title: <>Crafting Dreams Into<br />Reality</>,
+    description: 'Every detail matters—our team combines creativity, sustainability, and expertise to deliver designs that resonate with both heart and purpose.'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85',
+    tag: 'FORM / FUNCTIONAL BEAUTY',
+    title: <>Spaces Made For<br />Living</>,
+    description: 'We shape thoughtful interiors around the way you live, balancing warm materials, clear lines, and enduring architectural character.'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85',
+    tag: 'VISION / BUILT TO LAST',
+    title: <>Architecture With<br />Purpose</>,
+    description: 'From the first sketch to the final detail, we create remarkable places with precision, clarity, and a lasting sense of place.'
+  }
+];
+
 const projects = [
   { id: 1, image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85', title: 'Architectural Visions', category: 'Interior Architecture', layout: 'small' },
   { id: 2, image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85', title: 'Modern Residence', category: 'Residential Architecture', layout: 'tall' },
@@ -84,6 +105,8 @@ export default function Home() {
   const [portfolioTab, setPortfolioTab] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const filteredProjects = portfolioTab === 'All'
     ? projects
     : projects.filter((project) => project.category === portfolioTab);
@@ -105,30 +128,87 @@ export default function Home() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedProject, filteredProjects]);
 
+  useEffect(() => {
+    const heroTimer = window.setInterval(() => {
+      setCurrentHeroSlide((slide) => (slide + 1) % heroSlides.length);
+    }, 6000);
+    return () => window.clearInterval(heroTimer);
+  }, []);
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+      setScrollProgress(progress);
+    };
+
+    updateScrollProgress();
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress);
+    return () => {
+      window.removeEventListener('scroll', updateScrollProgress);
+      window.removeEventListener('resize', updateScrollProgress);
+    };
+  }, []);
+
   return (
     <div className="home-main">
+      <motion.div
+        className="scroll-progress"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: scrollProgress > 2 ? 1 : 0, scale: scrollProgress > 2 ? 1 : 0.8 }}
+        transition={{ duration: 0.25 }}
+      >
+        <svg viewBox="0 0 44 44" aria-hidden="true">
+          <circle className="scroll-progress-track" cx="22" cy="22" r="19" />
+          <circle
+            className="scroll-progress-ring"
+            cx="22"
+            cy="22"
+            r="19"
+            style={{ strokeDashoffset: 119.38 - (119.38 * scrollProgress) / 100 }}
+          />
+        </svg>
+        <span aria-hidden="true">↑</span>
+      </motion.div>
+
       {/* 1. HERO SECTION */}
-      <motion.section className="hero-section" variants={imageReveal} initial="hidden" animate="visible">
-        <motion.div 
-          className="hero-content-box"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="badge-pill">SIGN / TIMELESS DESIGN</div>
-          <h1 className="hero-title">Shaping Spaces, <br />Inspiring Lives</h1>
-          <p className="hero-desc">
-            We believe architecture is more than buildings—it’s about creating that uplift, connect. Every project is crafted with precision and a dedication.
-          </p>
-          <a href="#look" className="hero-look-btn">
-            <div className="arrow-circle-dark"><ArrowRight size={16} /></div>
-            <span>Have A Look</span>
-          </a>
-        </motion.div>
+      <motion.section
+        className="hero-section"
+        variants={imageReveal}
+        initial="hidden"
+        animate="visible"
+        style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${heroSlides[currentHeroSlide].image})` }}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            className="hero-content-box"
+            key={currentHeroSlide}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+          >
+            <div className="badge-pill">{heroSlides[currentHeroSlide].tag}</div>
+            <h1 className="hero-title">{heroSlides[currentHeroSlide].title}</h1>
+            <p className="hero-desc">{heroSlides[currentHeroSlide].description}</p>
+            <a href="#look" className="hero-look-btn">
+              <div className="arrow-circle-dark"><ArrowRight size={16} /></div>
+              <span>Have A Look</span>
+            </a>
+          </motion.div>
+        </AnimatePresence>
         <div className="hero-pagination-dots">
-          <span className="dot active"></span>
-          <span className="dot"></span>
-          <span className="dot"></span>
+          {heroSlides.map((slide, index) => (
+            <button
+              className={`dot ${currentHeroSlide === index ? 'active' : ''}`}
+              key={slide.tag}
+              type="button"
+              aria-label={`Show slide ${index + 1}`}
+              aria-pressed={currentHeroSlide === index}
+              onClick={() => setCurrentHeroSlide(index)}
+            />
+          ))}
         </div>
       </motion.section>
 
@@ -257,6 +337,7 @@ export default function Home() {
           ))}
         </motion.div>
       </motion.section> */}
+      
   {/* 5. OUR EXCELLENT EFFORTS */}
 <motion.section
   className="portfolio-section"

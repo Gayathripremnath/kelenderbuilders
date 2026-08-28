@@ -4,6 +4,51 @@
   font-family: inherit;
 }
 
+.scroll-progress {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1500;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #171717;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  pointer-events: none;
+}
+
+.scroll-progress svg {
+  position: absolute;
+  inset: 4px;
+  width: 44px;
+  height: 44px;
+  transform: rotate(-90deg);
+}
+
+.scroll-progress circle {
+  fill: none;
+  stroke-width: 3;
+}
+
+.scroll-progress-track { stroke: rgba(255, 255, 255, .18); }
+
+.scroll-progress-ring {
+  stroke: #c5a880;
+  stroke-linecap: round;
+  stroke-dasharray: 119.38;
+  transition: stroke-dashoffset .15s linear;
+}
+
+.scroll-progress span {
+  position: relative;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .redefining-img-wrapper,
 .pane-left-img,
 .p-item {
@@ -96,9 +141,12 @@
 .dot {
   width: 8px;
   height: 8px;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
   background: rgba(255,255,255,0.4);
   cursor: pointer;
+  transition: width .25s ease, background .25s ease;
 }
 
 .dot.active {
@@ -490,9 +538,9 @@
 .portfolio-section {
   max-width: 1440px;
   margin: 100px auto;
-  padding: 70px 30px 40px;
+  padding: 20px 30px 40px;
   text-align: center;
-  background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80') center/cover;
+  /* background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)); */
   border-radius: 24px;
   overflow: hidden;
 }
@@ -822,4 +870,19 @@
   .testimonial-image { height: 280px; }
   .testimonial-content h2 { font-size: 48px; }
   .testimonial-text { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .scroll-progress {
+    right: 14px;
+    bottom: 14px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .scroll-progress svg {
+    inset: 3px;
+    width: 40px;
+    height: 40px;
+  }
 }

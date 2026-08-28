@@ -1,193 +1,593 @@
-.footer-main {
-  background-color: #161616;
-  color: #a3a3a3;
-  padding: 80px 20px 30px 20px;
-  font-family: inherit;
+/* =====================================================
+   KELENDER BUILDERS FOOTER
+===================================================== */
+
+.site-footer {
+  width: calc(100% - 22px);
+  margin: 0 11px 10px;
+
+  background: #171717;
+  color: #ffffff;
+
+  border-radius: 60px;
+
+  overflow: hidden;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.newsletter-box {
-  max-width: 1320px;
-  margin: 0 auto 60px auto;
-  display: flex;
-  justify-content: space-between;
+
+/* =====================================================
+   NEWSLETTER
+===================================================== */
+
+.footer-newsletter {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  padding: 52px 0 48px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 60px;
-  gap: 40px;
+
+  gap: 55px;
 }
+
+
+/* TITLE */
 
 .newsletter-title h2 {
-  color: #fff;
-  font-size: 32px;
-  font-weight: 700;
-  max-width: 450px;
-}
+  margin: 0;
 
-.newsletter-form-area {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+  font-size: 29px;
+  line-height: 1.2;
 
-.newsletter-input-group {
-  display: flex;
-  background: #222;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 30px;
-  padding: 6px;
-  width: 450px;
-}
-
-.newsletter-input-group input {
-  background: transparent;
-  border: none;
-  padding: 10px 20px;
-  color: #fff;
-  outline: none;
-  font-size: 14px;
-  flex: 1;
-}
-
-.subscribe-btn {
-  background-color: #c5a880;
-  color: #fff;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 24px;
   font-weight: 600;
-  cursor: pointer;
+
+  letter-spacing: -0.5px;
 }
 
-.terms-checkbox {
+.newsletter-title h2 span {
+  color: #d2a357;
+}
+
+
+/* FORM */
+
+.newsletter-form-wrapper {
+  width: 100%;
+}
+
+.newsletter-form {
+  width: 100%;
+  height: 38px;
+
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: #888;
-  cursor: pointer;
+
+  border: 1px solid #777;
+  border-radius: 25px;
+
+  padding: 3px;
+
+  box-sizing: border-box;
 }
 
-.terms-checkbox strong {
-  color: #ccc;
+.newsletter-form input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  padding: 0 14px;
+
+  font-size: 10px;
+}
+
+.newsletter-form input::placeholder {
+  color: #999;
+}
+
+
+/* SUBSCRIBE BUTTON */
+
+.newsletter-form button {
+  height: 32px;
+
+  min-width: 132px;
+
+  border: none;
+
+  border-radius: 20px;
+
+  background: #d2a357;
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: #e0b56c;
+}
+
+
+/* TERMS */
+
+.terms-check {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 12px;
+
+  font-size: 9px;
+
+  color: #eeeeee;
+}
+
+.terms-check input {
+  width: 11px;
+  height: 11px;
+
+  margin: 0;
+
+  accent-color: #d2a357;
+}
+
+.terms-check a {
+  color: #ffffff;
+
+  font-weight: 600;
+
   text-decoration: underline;
 }
 
-.footer-content {
-  max-width: 1320px;
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.footer-divider {
+  width: calc(100% - 225px);
+
+  height: 1px;
+
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 60px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+
+  background: rgba(255, 255, 255, 0.18);
 }
+
+
+/* =====================================================
+   FOOTER CONTENT
+===================================================== */
+
+.footer-content {
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  padding: 36px 0 55px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.4fr
+    1fr
+    1fr
+    1.1fr;
+
+  gap: 55px;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
 
 .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+  width: 120px;
+
+  height: auto;
+
+  object-fit: contain;
+
+  margin-bottom: 15px;
+
+  /* If your logo has a white background */
+  mix-blend-mode: screen;
 }
 
-.logo-text.light {
-  color: #fff;
+
+/* =====================================================
+   COMPANY DESCRIPTION
+===================================================== */
+
+.company-description {
+  max-width: 235px;
+
+  margin: 0 0 25px;
+
+  font-size: 10px;
+
+  line-height: 1.7;
+
+  color: #d0d0d0;
 }
 
-.brand-col p {
+
+/* =====================================================
+   COLUMN HEADINGS
+===================================================== */
+
+.footer-column h3 {
+  margin: 0 0 23px;
+
   font-size: 13px;
-  line-height: 1.6;
-  margin-bottom: 24px;
+
+  font-weight: 600;
+
+  color: #ffffff;
 }
 
-.request-consult-btn {
+
+/* =====================================================
+   CONSULTATION BUTTON
+===================================================== */
+
+.consultation-btn {
   display: inline-flex;
+
   align-items: center;
-  background-color: #fff;
-  color: #1a1a1a;
-  padding: 8px 8px 8px 20px;
-  border-radius: 30px;
+
+  gap: 9px;
+
+  height: 34px;
+
+  padding: 3px 14px 3px 4px;
+
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  color: #222222;
+
   text-decoration: none;
-  font-weight: 600;
-  font-size: 13px;
-  gap: 14px;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  transition: 0.3s ease;
 }
 
-.footer-col h3 {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 20px;
+.consultation-icon {
+  width: 27px;
+  height: 27px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #d2a357;
+
+  color: #ffffff;
 }
 
-.footer-col ul {
+.consultation-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   SUPPORT LINKS
+===================================================== */
+
+.footer-links {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+
+  margin: 0;
+  padding: 0;
 }
 
-.footer-col ul li a {
-  color: #a3a3a3;
+.footer-links li {
+  margin-bottom: 14px;
+}
+
+.footer-links a {
+  color: #d3d3d3;
+
   text-decoration: none;
-  font-size: 13px;
-  transition: color 0.3s;
+
+  font-size: 10px;
+
+  transition: 0.25s ease;
 }
 
-.footer-col ul li a:hover {
-  color: #c5a880;
+.footer-links a:hover {
+  color: #d2a357;
+
+  padding-left: 3px;
 }
 
-.hours-row {
-  font-size: 13px;
-  margin-bottom: 8px;
-}
 
-.hours-row strong {
-  color: #fff;
-}
+/* =====================================================
+   BUSINESS HOURS
+===================================================== */
 
-.footer-contact-item {
+.business-hours {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 15px;
+
+  flex-direction: column;
+
+  gap: 18px;
 }
 
-.mt-20 {
-  margin-top: 20px;
+.hours-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #d0d0d0;
+
+  font-size: 9px;
 }
+
+.hours-item svg {
+  color: #d2a357;
+
+  flex-shrink: 0;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #d4d4d4;
+
+  font-size: 9px;
+}
+
+.email-label {
+  margin-top: 26px;
+}
+
+.contact-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.contact-item svg {
+  color: #ffffff;
+
+  flex-shrink: 0;
+}
+
+
+/* =====================================================
+   BOTTOM BAR
+===================================================== */
 
 .footer-bottom {
-  max-width: 1320px;
-  margin: 30px auto 0 auto;
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  padding: 17px 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
-  font-size: 13px;
+
+  justify-content: space-between;
 }
+
+.footer-bottom p {
+  margin: 0;
+
+  color: #dddddd;
+
+  font-size: 9px;
+}
+
+.footer-bottom p span {
+  color: #d2a357;
+}
+
+
+/* =====================================================
+   SOCIAL ICONS
+===================================================== */
 
 .footer-socials {
   display: flex;
-  gap: 20px;
+
+  align-items: center;
+
+  gap: 10px;
 }
 
 .footer-socials a {
-  color: #a3a3a3;
-  transition: color 0.3s;
+  width: 26px;
+  height: 26px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  transition: 0.3s ease;
 }
 
 .footer-socials a:hover {
-  color: #c5a880;
+  background: #d2a357;
+
+  transform: translateY(-2px);
 }
 
-@media(max-width: 1024px) {
-  .footer-content, .newsletter-box {
+
+/* =====================================================
+   RESPONSIVE - TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .footer-newsletter {
+    padding: 45px 35px;
+
     grid-template-columns: 1fr;
-    flex-direction: column;
+
+    gap: 30px;
   }
-  .newsletter-input-group {
+
+  .footer-divider {
+    width: calc(100% - 70px);
+  }
+
+  .footer-content {
+    padding: 40px 35px;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 45px 30px;
+  }
+
+  .footer-bottom {
+    margin: 0 35px;
+  }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .site-footer {
+    width: calc(100% - 20px);
+
+    margin: 0 10px 10px;
+
+    border-radius: 0 0 16px 16px;
+  }
+
+
+  .footer-newsletter {
+    padding: 40px 22px;
+
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+
+  .newsletter-title h2 {
+    font-size: 25px;
+  }
+
+
+  .newsletter-form {
+    height: 42px;
+  }
+
+
+  .newsletter-form button {
+    min-width: 105px;
+
+    font-size: 9px;
+  }
+
+
+  .footer-divider {
+    width: calc(100% - 44px);
+  }
+
+
+  .footer-content {
+    padding: 38px 22px;
+
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+
+  .footer-column {
     width: 100%;
   }
+
+
+  .company-description {
+    max-width: 320px;
+  }
+
+
+  .contact-item {
+    font-size: 12px;
+  }
+
+
+  .footer-bottom {
+    margin: 0 22px;
+
+    padding: 18px 0;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    align-items: flex-start;
+  }
+
 }

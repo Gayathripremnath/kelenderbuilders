@@ -1,79 +1,273 @@
-import React from 'react';
-import { ArrowRight, Phone, Mail, Globe, X } from 'lucide-react';
-import { FaFacebookF, FaYoutube, FaInstagram, FaPinterestP } from 'react-icons/fa6';
-import Logo from '../assets/Logo.jpeg';
-import './Footer.css';
+import React from "react";
+import {
+  ArrowRight,
+  Phone,
+  Mail,
+  Clock,
+} from "lucide-react";
 
-export default function Footer() {
+import {
+  FaFacebookF,
+  FaYoutube,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa6";
+
+import "./Footer.css";
+import Logo from "../assets/Logo.jpeg";
+
+const Footer = () => {
   return (
-    <footer className="footer-main">
-      {/* Newsletter Box */}
-      <div className="newsletter-box">
+    <footer className="site-footer">
+
+      {/* ================= NEWSLETTER ================= */}
+      <div className="footer-newsletter">
+
         <div className="newsletter-title">
-          <h2>Register Our Newsletter, And Stay In Touch</h2>
+          <h2>
+            Register Our Newsletter,
+            <br />
+            <span>And Stay In Touch</span>
+          </h2>
         </div>
-        <div className="newsletter-form-area">
-          <div className="newsletter-input-group">
-            <input type="email" placeholder="Enter Your Email" />
-            <button className="subscribe-btn">Subscribe Now</button>
-          </div>
-          <label className="terms-checkbox">
-            <input type="checkbox" defaultChecked />
-            <span>I have accepted the <strong>Terms & Conditions</strong></span>
+
+        <div className="newsletter-form-wrapper">
+
+          <form className="newsletter-form">
+
+            <input
+              type="email"
+              placeholder="Enter Your Email"
+            />
+
+            <button type="submit">
+              Subscribe Now
+            </button>
+
+          </form>
+
+          <label className="terms-check">
+            <input type="checkbox" />
+
+            <span>
+              I have accepted the{" "}
+              <a href="#terms">
+                Terms & Conditions
+              </a>
+            </span>
           </label>
+
         </div>
+
       </div>
 
-      {/* Main Footer Links */}
+
+      {/* ================= DIVIDER ================= */}
+      <div className="footer-divider"></div>
+
+
+      {/* ================= FOOTER CONTENT ================= */}
       <div className="footer-content">
-        <div className="footer-col brand-col">
-          <div className="footer-logo">
-            <img src={Logo} alt="kel Logo" className="logo-img" />
-          </div>
-          <p>Kelender is dedicated to transforming visions into timeless spaces through innovative architecture and thoughtful design.</p>
-          <a href="#consultation" className="request-consult-btn">
-            <div className="arrow-circle"><ArrowRight size={14} /></div>
-            <span>Request Consultation</span>
+
+        {/* COMPANY */}
+        <div className="footer-column company-column">
+
+          <img
+            src={Logo}
+            alt="Kelender Builders"
+            className="footer-logo"
+          />
+
+          <p className="company-description">
+            Kelender Builders is dedicated to transforming
+            visions into timeless spaces through innovative
+            construction, thoughtful design and quality
+            development.
+          </p>
+
+          <a
+            href="#consultation"
+            className="consultation-btn"
+          >
+            <span className="consultation-icon">
+              <ArrowRight size={16} />
+            </span>
+
+            <span>
+              Request Consultation
+            </span>
           </a>
+
         </div>
 
-        <div className="footer-col">
+
+        {/* SUPPORT LINKS */}
+        <div className="footer-column">
+
           <h3>Support Links</h3>
-          <ul>
-            <li><a href="#blogs">Our Blogs</a></li>
-            <li><a href="#careers">Careers</a></li>
-            <li><a href="#faqs">Frequent QA's</a></li>
-            <li><a href="#team">Meet Our Team</a></li>
-            <li><a href="#awards">Awards and Rewards</a></li>
-            <li><a href="#pricing">Pricing Plan</a></li>
+
+          <ul className="footer-links">
+
+            <li>
+              <a href="#about">
+                About Us
+              </a>
+            </li>
+
+            <li>
+              <a href="#projects">
+                Our Projects
+              </a>
+            </li>
+
+            <li>
+              <a href="#services">
+                Our Services
+              </a>
+            </li>
+
+            <li>
+              <a href="#careers">
+                Careers
+              </a>
+            </li>
+
+            <li>
+              <a href="#contact">
+                Contact Us
+              </a>
+            </li>
+
+            <li>
+              <a href="#faq">
+                FAQ
+              </a>
+            </li>
+
           </ul>
+
         </div>
 
-        <div className="footer-col">
+
+        {/* BUSINESS HOURS */}
+        <div className="footer-column">
+
           <h3>Business Hours</h3>
-          <p className="hours-row"><strong>Mon to Fri :</strong> 09 Am – 06 Pm</p>
-          <p className="hours-row"><strong>Saturday :</strong> 10 Am – 02 Pm</p>
-          <p className="hours-row"><strong>Sunday :</strong> Closed</p>
+
+          <div className="business-hours">
+
+            <div className="hours-item">
+              <Clock size={14} />
+              <span>
+                Mon to Fri : 09 Am – 06 Pm
+              </span>
+            </div>
+
+            <div className="hours-item">
+              <Clock size={14} />
+              <span>
+                Saturday : 10 Am – 02 Pm
+              </span>
+            </div>
+
+            <div className="hours-item">
+              <Clock size={14} />
+              <span>
+                Sunday : Closed
+              </span>
+            </div>
+
+          </div>
+
         </div>
 
-        <div className="footer-col">
-          <h3>Dial Us For Help</h3>
-          <p className="footer-contact-item"><Phone size={16} /> +1(0) 1234 5678</p>
-          <h3 className="mt-20">Got A Question?</h3>
-          <p className="footer-contact-item"><Mail size={16} /> info@example.com</p>
+
+        {/* CONTACT */}
+        <div className="footer-column contact-column">
+
+          <span className="contact-label">
+            Dial Us For Help
+          </span>
+
+          <a
+            href="tel:+919876543210"
+            className="contact-item"
+          >
+            <Phone size={16} />
+
+            <span>
+              +91 98765 43210
+            </span>
+          </a>
+
+
+          <span className="contact-label email-label">
+            Got A Question?
+          </span>
+
+          <a
+            href="mailto:info@kelenderbuilders.com"
+            className="contact-item"
+          >
+            <Mail size={16} />
+
+            <span>
+              info@kelenderbuilders.com
+            </span>
+          </a>
+
         </div>
+
       </div>
 
-      {/* Bottom Bar */}
+
+      {/* ================= BOTTOM BAR ================= */}
       <div className="footer-bottom">
-        <p>©Designthemes all rights reserved.</p>
+
+        <p>
+          © 2026{" "}
+          <span>Kelender Builders</span>{" "}
+          all rights reserved.
+        </p>
+
+
+        {/* SOCIAL ICONS */}
         <div className="footer-socials">
-          <a href="#fb"><FaFacebookF /></a>
-          <a href="#x"><X size={14} /></a>
-          <a href="#yt"><FaYoutube /></a>
-          <a href="#pin"><FaPinterestP /></a>
+
+          <a
+            href="#facebook"
+            aria-label="Facebook"
+          >
+            <FaFacebookF size={13} />
+          </a>
+
+          <a
+            href="#instagram"
+            aria-label="Instagram"
+          >
+            <FaInstagram size={14} />
+          </a>
+
+          <a
+            href="#youtube"
+            aria-label="YouTube"
+          >
+            <FaYoutube size={14} />
+          </a>
+
+          <a
+            href="#linkedin"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedinIn size={14} />
+          </a>
+
         </div>
+
       </div>
+
     </footer>
   );
-}
+};
+
+export default Footer;
